@@ -3,6 +3,7 @@ import logo from "./logo.svg";
 import "./css/App.css";
 import ColorSquare from "./components/ColorSquare";
 import ColorListbox from "./components/ColorListbox";
+import PunnettTable from "./components/PunnettTable";
 
 class App extends Component {
   render() {
@@ -10,6 +11,7 @@ class App extends Component {
       <div className="App">
         <ColorSquare color="Tomato" />
         <ColorListbox />
+        <PunnettTable />
       </div>
     );
   }

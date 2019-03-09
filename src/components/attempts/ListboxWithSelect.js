@@ -4,22 +4,18 @@ import ColorSquare from "./ColorSquare";
 
 import "../css/listbox.css";
 
-import Dropdown from "react-accessible-dropdown";
 class ColorListbox extends Component {
 	render() {
 		return (
-			<div>
-				<Dropdown
-					options={Object.keys(colors).map(color => {
+			<div className="color-listbox">
+				<select>
+					{Object.keys(colors).map(color => {
+						const boxStyle = { fontSize: "30px", color: color };
 						return (
-							<div>
-								{color} <ColorSquare color={color} />
-							</div>
+							<option style={boxStyle}>{color} &#9632;</option>
 						);
 					})}
-					onChange={this._onSelect}
-					placeholder="Select an option"
-				/>
+				</select>
 			</div>
 		);
 	}
