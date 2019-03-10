@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { colors } from "../utils/colors";
-import ColorSquare from "./ColorSquare";
+//import ColorSquare from "./ColorSquare";
 
 import "../css/listbox.css";
 
@@ -9,6 +9,10 @@ class ColorListbox extends Component {
 		super(props);
 		// create a ref to store the DOM element
 		this.selectRef = React.createRef();
+		this.arrayOfOptionsRefs = [];
+		this.setOptionRef = element => {
+			this.arrayOfOptionsRefs.push(element);
+		};
 	}
 	state = {
 		currentAllele: undefined,
@@ -21,18 +25,22 @@ class ColorListbox extends Component {
 				this.setState(() => ({
 					openOptions: !this.state.openOptions
 				}));
-				this.selectRef.current.focus();
-
+				break;
 			case "keydown":
-				if (event.key == "Enter" || event.key == " ") {
-					this.setState(() => ({
-						openOptions: !this.state.openOptions
-					}));
-					this.selectRef.current.focus();
+				if (event.key === "Enter" || event.key === " ") {
+					this.setState(
+						() => {
+							return { openOptions: !this.state.openOptions };
+						},
+						() => {
+							this.arrayOfOptionsRefs[0].focus();
+						}
+					);
 				}
 		}
 	};
-	handleSelectAllele = (color, event) => {
+	handleOptionsEvents = (color, index, event) => {
+		console.log(this);
 		switch (event.type) {
 			case "click":
 				this.setState(() => ({
@@ -40,14 +48,22 @@ class ColorListbox extends Component {
 					openOptions: !this.state.openOptions
 				}));
 				this.selectRef.current.focus();
-
+				break;
 			case "keydown":
-				if (event.key == "Enter" || event.key == " ") {
+				if (event.key === "Enter" || event.key === " ") {
 					this.setState(() => ({
 						currentAllele: color,
 						openOptions: !this.state.openOptions
 					}));
 					this.selectRef.current.focus();
+				}
+				if (event.key === "ArrowUp") {
+					event.preventDefault();
+					this.arrayOfOptionsRefs[index - 1].focus();
+				}
+				if (event.key === "ArrowDown") {
+					event.preventDefault();
+					this.arrayOfOptionsRefs[index + 1].focus();
 				}
 		}
 	};
@@ -93,7 +109,7 @@ class ColorListbox extends Component {
 				<div>
 					{openOptions === true ? (
 						<div style={optionsStyle}>
-							{Object.keys(colors).map(color => {
+							{Object.keys(colors).map((color, index) => {
 								const boxStyle = {
 									fontSize: "20px",
 									color: color
@@ -104,12 +120,21 @@ class ColorListbox extends Component {
 										role="option"
 										key={color}
 										onClick={e =>
-											this.handleSelectAllele(color, e)
+											this.handleOptionsEvents(
+												color,
+												index,
+												e
+											)
 										}
 										onKeyDown={e =>
-											this.handleSelectAllele(color, e)
+											this.handleOptionsEvents(
+												color,
+												index,
+												e
+											)
 										}
 										style={boxStyle}
+										ref={this.setOptionRef}
 									>
 										{color} &#9632;
 									</div>
