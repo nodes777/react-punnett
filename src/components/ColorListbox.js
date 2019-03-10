@@ -5,6 +5,11 @@ import ColorSquare from "./ColorSquare";
 import "../css/listbox.css";
 
 class ColorListbox extends Component {
+	constructor(props) {
+		super(props);
+		// create a ref to store the DOM element
+		this.selectRef = React.createRef();
+	}
 	state = {
 		currentAllele: undefined,
 		openOptions: false
@@ -16,11 +21,14 @@ class ColorListbox extends Component {
 				this.setState(() => ({
 					openOptions: !this.state.openOptions
 				}));
+				this.selectRef.current.focus();
+
 			case "keydown":
 				if (event.key == "Enter" || event.key == " ") {
 					this.setState(() => ({
 						openOptions: !this.state.openOptions
 					}));
+					this.selectRef.current.focus();
 				}
 		}
 	};
@@ -31,12 +39,15 @@ class ColorListbox extends Component {
 					currentAllele: color,
 					openOptions: !this.state.openOptions
 				}));
+				this.selectRef.current.focus();
+
 			case "keydown":
 				if (event.key == "Enter" || event.key == " ") {
 					this.setState(() => ({
 						currentAllele: color,
 						openOptions: !this.state.openOptions
 					}));
+					this.selectRef.current.focus();
 				}
 		}
 	};
@@ -44,12 +55,14 @@ class ColorListbox extends Component {
 	render() {
 		let { currentAllele, openOptions } = this.state;
 		const optionsStyle = {
-			backgroundColor: "gray",
+			backgroundColor: "#282c34",
 			position: "fixed",
 			zIndex: 2,
 			overflowY: "auto",
-			width: "200px",
-			height: "500px"
+			width: "220px",
+			height: "400px",
+			border: "2px solid black",
+			borderRadius: "2px"
 		};
 		const selectStyle = {
 			border: "2px solid black",
@@ -67,6 +80,9 @@ class ColorListbox extends Component {
 					aria-pressed={this.state.openOptions}
 					aria-expanded={this.state.openOptions}
 					style={selectStyle}
+					// Use the `ref` callback to store a reference to the text input DOM
+					// element in an instance field
+					ref={this.selectRef}
 				>
 					{currentAllele === undefined ? (
 						"Select an Allele"
@@ -84,8 +100,13 @@ class ColorListbox extends Component {
 								};
 								return (
 									<div
+										tabIndex="0"
+										role="option"
 										key={color}
 										onClick={e =>
+											this.handleSelectAllele(color, e)
+										}
+										onKeyDown={e =>
 											this.handleSelectAllele(color, e)
 										}
 										style={boxStyle}
