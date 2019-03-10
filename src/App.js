@@ -1,16 +1,18 @@
 import React, { Component } from "react";
 import "./css/App.css";
 import ColorSquare from "./components/ColorSquare";
-import ColorListbox from "./components/ColorListbox";
+import ColorListboxContainer from "./components/ColorListboxContainer";
 import PunnettTable from "./components/PunnettTable";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <ColorSquare color="Tomato" />
-        <ColorListbox />
-        <PunnettTable />
+        {/*        <ColorSquare color="Tomato" />
+         */}{" "}
+        <ColorListboxContainer />
+        {/*        <PunnettTable />
+         */}{" "}
       </div>
     );
   }

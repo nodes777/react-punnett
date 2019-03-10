@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { colors } from "../utils/colors";
-//import ColorSquare from "./ColorSquare";
+import ColorListboxSelect from "./ColorListboxSelect";
+import ColorListboxOptions from "./ColorListboxOptions";
 
 import "../css/listbox.css";
 
-class ColorListbox extends Component {
+class ColorListboxContainer extends Component {
 	constructor(props) {
 		super(props);
 		// create a ref to store the DOM element
@@ -84,60 +85,21 @@ class ColorListbox extends Component {
 		};
 		return (
 			<div>
-				<div
-					tabIndex="0"
-					role="select"
-					onClick={this.handleOpenOptions}
-					onKeyDown={this.handleOpenOptions}
-					aria-pressed={this.state.openOptions}
-					aria-expanded={this.state.openOptions}
-					className="select-allele"
-					style={selectStyle}
+				<ColorListboxSelect
+					handleOpenOptions={this.handleOpenOptions}
+					openOptions={this.state.openOptions}
+					selectStyle={selectStyle}
 					// Use the `ref` callback to store a reference to the text input DOM
 					// element in an instance field
-					ref={this.selectRef}
-				>
-					{currentAllele === undefined ? (
-						"Select an Allele"
-					) : (
-						<span>{currentAllele} &#9632;</span>
-					)}
-				</div>
+					selectRef={this.selectRef}
+					currentAllele={currentAllele}
+				/>
 				<div>
 					{openOptions === true ? (
-						<div className="options-allele">
-							{Object.keys(colors).map((color, index) => {
-								const boxStyle = {
-									fontSize: "20px",
-									color: color
-								};
-								return (
-									<div
-										tabIndex="0"
-										role="option"
-										key={color}
-										onClick={e =>
-											this.handleOptionsEvents(
-												color,
-												index,
-												e
-											)
-										}
-										onKeyDown={e =>
-											this.handleOptionsEvents(
-												color,
-												index,
-												e
-											)
-										}
-										style={boxStyle}
-										ref={this.setOptionRef}
-									>
-										{color} &#9632;
-									</div>
-								);
-							})}
-						</div>
+						<ColorListboxOptions
+							handleOptionsEvents={this.handleOptionsEvents}
+							setOptionRef={this.setOptionRef}
+						/>
 					) : null}
 				</div>
 			</div>
@@ -145,4 +107,4 @@ class ColorListbox extends Component {
 	}
 }
 
-export default ColorListbox;
+export default ColorListboxContainer;

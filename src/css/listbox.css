@@ -1,4 +1,17 @@
 .color-listbox {
 }
-.option {
+.options-allele {
+	background-color: #282c34;
+	position: fixed;
+	z-index: 2;
+	overflow-y: auto;
+	width: 220px;
+	height: 400px;
+	border: 2px solid black;
+	border-radius: 2px;
+}
+.select-allele {
+	border: 2px solid black;
+	border-radius: 2px;
+	padding: 5px;
 }
