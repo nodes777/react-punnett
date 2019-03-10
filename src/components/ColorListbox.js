@@ -9,6 +9,7 @@ class ColorListbox extends Component {
 		currentAllele: undefined,
 		openOptions: false
 	};
+
 	handleOpenOptions = event => {
 		switch (event.type) {
 			case "click":
@@ -22,10 +23,40 @@ class ColorListbox extends Component {
 					}));
 				}
 		}
-
-		console.log(this.state);
 	};
+	handleSelectAllele = (color, event) => {
+		switch (event.type) {
+			case "click":
+				this.setState(() => ({
+					currentAllele: color,
+					openOptions: !this.state.openOptions
+				}));
+			case "keydown":
+				if (event.key == "Enter" || event.key == " ") {
+					this.setState(() => ({
+						currentAllele: color,
+						openOptions: !this.state.openOptions
+					}));
+				}
+		}
+	};
+
 	render() {
+		let { currentAllele, openOptions } = this.state;
+		const optionsStyle = {
+			backgroundColor: "gray",
+			position: "fixed",
+			zIndex: 2,
+			overflowY: "auto",
+			width: "200px",
+			height: "500px"
+		};
+		const selectStyle = {
+			border: "2px solid black",
+			borderRadius: "2px",
+			padding: "5px",
+			color: currentAllele
+		};
 		return (
 			<div>
 				<div
@@ -33,14 +64,37 @@ class ColorListbox extends Component {
 					role="select"
 					onClick={this.handleOpenOptions}
 					onKeyDown={this.handleOpenOptions}
+					aria-pressed={this.state.openOptions}
+					aria-expanded={this.state.openOptions}
+					style={selectStyle}
 				>
-					{this.state.currentAllele === undefined
-						? "Select an allele"
-						: this.state.currentAllele}
+					{currentAllele === undefined ? (
+						"Select an Allele"
+					) : (
+						<span>{currentAllele} &#9632;</span>
+					)}
 				</div>
 				<div>
-					{this.state.openOptions === true ? (
-						<div>options</div>
+					{openOptions === true ? (
+						<div style={optionsStyle}>
+							{Object.keys(colors).map(color => {
+								const boxStyle = {
+									fontSize: "20px",
+									color: color
+								};
+								return (
+									<div
+										key={color}
+										onClick={e =>
+											this.handleSelectAllele(color, e)
+										}
+										style={boxStyle}
+									>
+										{color} &#9632;
+									</div>
+								);
+							})}
+						</div>
 					) : null}
 				</div>
 			</div>
