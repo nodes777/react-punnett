@@ -2,9 +2,9 @@ import React from "react";
 import { colors } from "../utils/colors";
 
 const ColorListboxOptions = props => {
-	const { handleOptionsEvents, setOptionRef } = props;
+	const { handleOptionsEvents, setOptionRef, focusedOption } = props;
 	return (
-		<div className="options-allele">
+		<div className="options-alleles">
 			{Object.keys(colors).map((color, index) => {
 				const boxStyle = {
 					fontSize: "20px",
@@ -14,13 +14,18 @@ const ColorListboxOptions = props => {
 					<div
 						tabIndex="0"
 						role="option"
+						aria-selected={color === focusedOption}
 						key={color}
 						onClick={e => handleOptionsEvents(color, index, e)}
 						onKeyDown={e => handleOptionsEvents(color, index, e)}
-						style={boxStyle}
 						ref={setOptionRef}
+						aria-posinset={index}
+						aria-setsize="144"
 					>
-						{color} &#9632;
+						<span>
+							<span className="option-allele">{color}</span>{" "}
+							<span style={boxStyle}>&#9632;</span>
+						</span>
 					</div>
 				);
 			})}

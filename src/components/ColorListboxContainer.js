@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { colors } from "../utils/colors";
 import ColorListboxSelect from "./ColorListboxSelect";
 import ColorListboxOptions from "./ColorListboxOptions";
 
@@ -10,14 +9,18 @@ class ColorListboxContainer extends Component {
 		super(props);
 		// create a ref to store the DOM element
 		this.selectRef = React.createRef();
-		this.arrayOfOptionsRefs = [];
-		this.setOptionRef = element => {
-			this.arrayOfOptionsRefs.push(element);
-		};
 	}
 	state = {
 		currentAllele: undefined,
-		openOptions: false
+		openOptions: false,
+		arrayOfOptionsRefs: [],
+		focusedOption: undefined
+	};
+	addOptionRef = element => {
+		this.setState(() => ({
+			arrayOfOptionsRefs: [...this.state.arrayOfOptionsRefs, element]
+		}));
+		console.log(this.state.arrayOfOptionsRefs);
 	};
 
 	handleOpenOptions = event => {
@@ -60,10 +63,16 @@ class ColorListboxContainer extends Component {
 				if (event.key === "ArrowUp") {
 					event.preventDefault();
 					this.arrayOfOptionsRefs[index - 1].focus();
+					this.setState(() => ({
+						focusedOption: color
+					}));
 				}
 				if (event.key === "ArrowDown") {
 					event.preventDefault();
 					this.arrayOfOptionsRefs[index + 1].focus();
+					this.setState(() => ({
+						focusedOption: color
+					}));
 				}
 				if (event.key === "Escape") {
 					this.setState(
@@ -79,7 +88,8 @@ class ColorListboxContainer extends Component {
 	};
 
 	render() {
-		let { currentAllele, openOptions } = this.state;
+		let { currentAllele, openOptions, focusedOption } = this.state;
+		const { parent } = this.props;
 		const selectStyle = {
 			color: currentAllele
 		};
@@ -93,12 +103,15 @@ class ColorListboxContainer extends Component {
 					// element in an instance field
 					selectRef={this.selectRef}
 					currentAllele={currentAllele}
+					parent={parent}
 				/>
 				<div>
 					{openOptions === true ? (
 						<ColorListboxOptions
 							handleOptionsEvents={this.handleOptionsEvents}
-							setOptionRef={this.setOptionRef}
+							addOptionRef={this.addOptionRef}
+							currentAllele={currentAllele}
+							focusedOption={focusedOption}
 						/>
 					) : null}
 				</div>

@@ -1,42 +1,46 @@
 import React, { Component } from "react";
 import Allele from "./Allele";
+import ColorListboxContainer from "./ColorListboxContainer";
+import "../css/table.css";
 
 class PunnettTable extends Component {
 	render() {
 		return (
-			<div>
-				<table>
-					<tbody>
-						<tr>
-							<td />
-							<th scope="col">Parent 1 Allele 1</th>
-							<th scope="col">Parent 1 Allele 2</th>
-						</tr>
-						<tr>
-							<th scope="row">Parent 2 Allele 1</th>
-							<td>
-								<Allele allele="P1A1" />
-								<Allele allele="P2A1" />
-							</td>
-							<td>
-								<Allele allele="P1A2" />
-								<Allele allele="P2A1" />
-							</td>
-						</tr>
-						<tr>
-							<th scope="row">Parent 2 Allele 2</th>
-							<td>
-								<Allele allele="P1A1" />
-								<Allele allele="P2A2" />
-							</td>
-							<td>
-								<Allele allele="P1A2" />
-								<Allele allele="P2A2" />
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
+			<table>
+				<tbody>
+					<tr>
+						<td rowSpan="2" colSpan="2" />
+						<th
+							colSpan="2"
+							scope="colgroup"
+							className="table-header"
+						>
+							Parent 1
+						</th>
+					</tr>
+					<tr>
+						<th scope="col">Parent 1 Allele 1</th>
+						<th scope="col">Parent 1 Allele 2</th>
+					</tr>
+					<tr>
+						<th
+							rowSpan="2"
+							scope="rowgroup"
+							className="table-header"
+						>
+							Parent 2
+						</th>
+						<th scope="row">Parent 2 Allele 1</th>
+						<td>Allele</td>
+						<td>Allele</td>
+					</tr>
+					<tr>
+						<th scope="row">Parent 2 Allele 2</th>
+						<td>Allele</td>
+						<td>Allele</td>
+					</tr>
+				</tbody>
+			</table>
 		);
 	}
 }

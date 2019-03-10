@@ -8,11 +8,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/*        <ColorSquare color="Tomato" />
-         */}{" "}
+        <ColorSquare color="Tomato" />
+
         <ColorListboxContainer />
-        {/*        <PunnettTable />
-         */}{" "}
+        <PunnettTable />
       </div>
     );
   }
