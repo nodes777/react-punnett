@@ -4,12 +4,10 @@ const ColorListboxSelect = props => {
 	const {
 		handleOpenOptions,
 		openOptions,
-		selectStyle,
 		currentAllele,
 		selectRef,
 		parent
 	} = props;
-	console.log(parent);
 	return (
 		<div
 			tabIndex="0"
@@ -31,7 +29,7 @@ const ColorListboxSelect = props => {
 					<span>{parent} </span>
 					<span>Allele </span>
 					<span>{currentAllele}</span>{" "}
-					<span style={selectStyle}>&#9632;</span>
+					<span style={{ color: currentAllele }}>&#9632;</span>
 				</span>
 			)}
 		</div>

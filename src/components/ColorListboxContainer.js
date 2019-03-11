@@ -9,18 +9,18 @@ class ColorListboxContainer extends Component {
 		super(props);
 		// create a ref to store the DOM element
 		this.selectRef = React.createRef();
+		this.arrayOfOptionsRefs = [];
 	}
 	state = {
 		currentAllele: undefined,
 		openOptions: false,
-		arrayOfOptionsRefs: [],
+		// arrayOfOptionsRefs: [],
 		focusedOption: undefined
 	};
-	addOptionRef = element => {
-		this.setState(() => ({
-			arrayOfOptionsRefs: [...this.state.arrayOfOptionsRefs, element]
-		}));
-		console.log(this.state.arrayOfOptionsRefs);
+
+	clearOptionsRefs = () => {
+		this.arrayOfOptionsRefs = [];
+		console.log(this.arrayOfOptionsRefs);
 	};
 
 	handleOpenOptions = event => {
@@ -59,6 +59,7 @@ class ColorListboxContainer extends Component {
 						openOptions: !this.state.openOptions
 					}));
 					this.selectRef.current.focus();
+					this.clearOptionsRefs();
 				}
 				if (event.key === "ArrowUp") {
 					event.preventDefault();
@@ -87,18 +88,22 @@ class ColorListboxContainer extends Component {
 		}
 	};
 
+	setOptionRef = element => {
+		// because refs are called when ColorListboxOptions is unmounted
+		// don't add it if it's null
+		if (element !== null) {
+			this.arrayOfOptionsRefs.push(element);
+		}
+	};
+
 	render() {
 		let { currentAllele, openOptions, focusedOption } = this.state;
 		const { parent } = this.props;
-		const selectStyle = {
-			color: currentAllele
-		};
 		return (
 			<div>
 				<ColorListboxSelect
 					handleOpenOptions={this.handleOpenOptions}
 					openOptions={this.state.openOptions}
-					selectStyle={selectStyle}
 					// Use the `ref` callback to store a reference to the text input DOM
 					// element in an instance field
 					selectRef={this.selectRef}
@@ -109,11 +114,13 @@ class ColorListboxContainer extends Component {
 					{openOptions === true ? (
 						<ColorListboxOptions
 							handleOptionsEvents={this.handleOptionsEvents}
-							addOptionRef={this.addOptionRef}
+							setOptionRef={this.setOptionRef}
 							currentAllele={currentAllele}
 							focusedOption={focusedOption}
 						/>
-					) : null}
+					) : (
+						[this.clearOptionsRefs(), null]
+					)}
 				</div>
 			</div>
 		);

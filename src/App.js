@@ -5,16 +5,16 @@ import ColorListboxContainer from "./components/ColorListboxContainer";
 import PunnettTable from "./components/PunnettTable";
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <ColorSquare color="Tomato" />
+	render() {
+		return (
+			<div className="App">
+				<ColorSquare color="Tomato" />
 
-        <ColorListboxContainer />
-        <PunnettTable />
-      </div>
-    );
-  }
+				<ColorListboxContainer parent="1" allele="1" />
+				<PunnettTable />
+			</div>
+		);
+	}
 }
 
 export default App;

@@ -14,13 +14,13 @@ const ColorListboxOptions = props => {
 					<div
 						tabIndex="0"
 						role="option"
-						aria-selected={color === focusedOption}
+						// aria-selected={color === focusedOption}
 						key={color}
 						onClick={e => handleOptionsEvents(color, index, e)}
 						onKeyDown={e => handleOptionsEvents(color, index, e)}
 						ref={setOptionRef}
 						aria-posinset={index}
-						aria-setsize="144"
+						aria-setsize="147"
 					>
 						<span>
 							<span className="option-allele">{color}</span>{" "}
