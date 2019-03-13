@@ -25,9 +25,6 @@ const ColorListboxSelect = props => {
 				"Select an Allele"
 			) : (
 				<span>
-					<span>Parent </span>
-					<span>{parent} </span>
-					<span>Allele </span>
 					<span>{currentAllele}</span>{" "}
 					<span style={{ color: currentAllele }}>&#9632;</span>
 				</span>

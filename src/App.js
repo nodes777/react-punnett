@@ -9,8 +9,6 @@ class App extends Component {
 		return (
 			<div className="App">
 				<ColorSquare color="Tomato" />
-
-				<ColorListboxContainer parent="1" allele="1" />
 				<PunnettTable />
 			</div>
 		);

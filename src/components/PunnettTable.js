@@ -19,8 +19,18 @@ class PunnettTable extends Component {
 						</th>
 					</tr>
 					<tr>
-						<th scope="col">Parent 1 Allele 1</th>
-						<th scope="col">Parent 1 Allele 2</th>
+						<th scope="col">
+							<ColorListboxContainer
+								parentId="parent1"
+								alleleId="allele1"
+							/>
+						</th>
+						<th scope="col">
+							<ColorListboxContainer
+								parentId="parent1"
+								alleleId="allele2"
+							/>
+						</th>
 					</tr>
 					<tr>
 						<th
@@ -30,14 +40,36 @@ class PunnettTable extends Component {
 						>
 							Parent 2
 						</th>
-						<th scope="row">Parent 2 Allele 1</th>
-						<td>Allele</td>
-						<td>Allele</td>
+						<th scope="row">
+							<ColorListboxContainer
+								parentId="parent2"
+								alleleId="allele1"
+							/>
+						</th>
+						<td>
+							<Allele parentId="parent1" alleleId="allele1" />
+							<Allele parentId="parent2" alleleId="allele1" />
+						</td>
+						<td>
+							<Allele parentId="parent1" alleleId="allele2" />
+							<Allele parentId="parent2" alleleId="allele1" />
+						</td>
 					</tr>
 					<tr>
-						<th scope="row">Parent 2 Allele 2</th>
-						<td>Allele</td>
-						<td>Allele</td>
+						<th scope="row">
+							<ColorListboxContainer
+								parentId="parent2"
+								alleleId="allele2"
+							/>
+						</th>
+						<td>
+							<Allele parentId="parent1" alleleId="allele1" />
+							<Allele parentId="parent2" alleleId="allele2" />
+						</td>
+						<td>
+							<Allele parentId="parent1" alleleId="allele2" />
+							<Allele parentId="parent2" alleleId="allele2" />
+						</td>
 					</tr>
 				</tbody>
 			</table>

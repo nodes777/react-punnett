@@ -1,6 +1,10 @@
+import { connect } from "react-redux";
 import React, { Component } from "react";
+
 import ColorListboxSelect from "./ColorListboxSelect";
 import ColorListboxOptions from "./ColorListboxOptions";
+
+import { changeParentAllele } from "../actions/parents";
 
 import "../css/listbox.css";
 
@@ -20,7 +24,17 @@ class ColorListboxContainer extends Component {
 
 	clearOptionsRefs = () => {
 		this.arrayOfOptionsRefs = [];
-		console.log(this.arrayOfOptionsRefs);
+	};
+
+	handleSubmit = () => {
+		const { dispatch, parentId, alleleId } = this.props;
+		const info = {
+			parentId: parentId,
+			alleleId: alleleId,
+			allele: this.state.currentAllele
+		};
+
+		dispatch(changeParentAllele(info));
 	};
 
 	handleOpenOptions = event => {
@@ -46,20 +60,29 @@ class ColorListboxContainer extends Component {
 	handleOptionsEvents = (color, index, event) => {
 		switch (event.type) {
 			case "click":
-				this.setState(() => ({
-					currentAllele: color,
-					openOptions: !this.state.openOptions
-				}));
+				this.setState(
+					() => ({
+						currentAllele: color,
+						openOptions: !this.state.openOptions
+					}),
+					() => {
+						this.handleSubmit();
+					}
+				);
 				this.selectRef.current.focus();
 				break;
 			case "keydown":
 				if (event.key === "Enter" || event.key === " ") {
-					this.setState(() => ({
-						currentAllele: color,
-						openOptions: !this.state.openOptions
-					}));
+					this.setState(
+						() => ({
+							currentAllele: color,
+							openOptions: !this.state.openOptions
+						}),
+						() => {
+							this.handleSubmit();
+						}
+					);
 					this.selectRef.current.focus();
-					this.clearOptionsRefs();
 				}
 				if (event.key === "ArrowUp") {
 					event.preventDefault();
@@ -119,6 +142,7 @@ class ColorListboxContainer extends Component {
 							focusedOption={focusedOption}
 						/>
 					) : (
+						// clear the refs array when ColorListbox is not being rendered
 						[this.clearOptionsRefs(), null]
 					)}
 				</div>
@@ -127,4 +151,10 @@ class ColorListboxContainer extends Component {
 	}
 }
 
-export default ColorListboxContainer;
+function mapStateToProps({ parents }) {
+	return {
+		parents: parents
+	};
+}
+
+export default connect(mapStateToProps)(ColorListboxContainer);
