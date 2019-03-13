@@ -2,13 +2,10 @@ import { CHANGE_PARENT_ALLELE } from "../actions/parents";
 import { combineReducers } from "redux";
 import exampleState from "../exampleState";
 
-console.log(exampleState);
-
 export function parents(state = exampleState, action) {
 	switch (action.type) {
 		case CHANGE_PARENT_ALLELE:
 			const { parentId, alleleId, allele } = action.data;
-			console.log();
 			return {
 				...state,
 				byId: {

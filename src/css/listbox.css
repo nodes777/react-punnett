@@ -5,8 +5,8 @@
 	border: 2px solid black;
 	border-radius: 2px;
 	padding: 5px;
-	font-size: 20px;
-	width: 300px;
+	width: auto;
+	min-width: 300px;
 }
 .options-alleles {
 	background-color: #282c34;

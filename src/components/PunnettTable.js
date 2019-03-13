@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Allele from "./Allele";
+import Diploid from "./Diploid";
 import ColorListboxContainer from "./ColorListboxContainer";
 import "../css/table.css";
 
@@ -47,8 +48,12 @@ class PunnettTable extends Component {
 							/>
 						</th>
 						<td>
-							<Allele parentId="parent1" alleleId="allele1" />
-							<Allele parentId="parent2" alleleId="allele1" />
+							<Diploid
+								p1Id="parent1"
+								p2Id="parent2"
+								a1Id="allele1"
+								a2Id="allele1"
+							/>
 						</td>
 						<td>
 							<Allele parentId="parent1" alleleId="allele2" />

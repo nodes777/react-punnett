@@ -55,6 +55,8 @@ class ColorListboxContainer extends Component {
 						}
 					);
 				}
+				break;
+			default:
 		}
 	};
 	handleOptionsEvents = (color, index, event) => {
@@ -108,6 +110,8 @@ class ColorListboxContainer extends Component {
 						}
 					);
 				}
+				break;
+			default:
 		}
 	};
 
