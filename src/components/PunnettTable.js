@@ -56,8 +56,12 @@ class PunnettTable extends Component {
 							/>
 						</td>
 						<td>
-							<Allele parentId="parent1" alleleId="allele2" />
-							<Allele parentId="parent2" alleleId="allele1" />
+							<Diploid
+								p1Id="parent1"
+								p2Id="parent2"
+								a1Id="allele2"
+								a2Id="allele1"
+							/>
 						</td>
 					</tr>
 					<tr>
@@ -68,12 +72,20 @@ class PunnettTable extends Component {
 							/>
 						</th>
 						<td>
-							<Allele parentId="parent1" alleleId="allele1" />
-							<Allele parentId="parent2" alleleId="allele2" />
+							<Diploid
+								p1Id="parent1"
+								p2Id="parent2"
+								a1Id="allele1"
+								a2Id="allele2"
+							/>
 						</td>
 						<td>
-							<Allele parentId="parent1" alleleId="allele2" />
-							<Allele parentId="parent2" alleleId="allele2" />
+							<Diploid
+								p1Id="parent1"
+								p2Id="parent2"
+								a1Id="allele2"
+								a2Id="allele2"
+							/>
 						</td>
 					</tr>
 				</tbody>
