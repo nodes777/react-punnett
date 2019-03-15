@@ -4,12 +4,18 @@ import PropTypes from "prop-types";
 import Allele from "./Allele";
 
 export class Diploid extends React.Component {
-	static propTypes = {};
+	static propTypes = {
+		p1Id: PropTypes.string,
+		p2Id: PropTypes.string,
+		a1Id: PropTypes.string,
+		a2Id: PropTypes.string
+	};
+
 	render() {
 		const { p1Id, p2Id, a1Id, a2Id } = this.props;
-		const { parents } = this.props;
-		const leftColorName = parents.byId[p1Id][a1Id];
-		const rightColorName = parents.byId[p2Id][a2Id];
+		// const { parents } = this.props;
+		// const leftColorName = parents.byId[p1Id][a1Id];
+		// const rightColorName = parents.byId[p2Id][a2Id];
 		// const bgStyle = {
 		// 	backgroundImage: `linear-gradient(to right, ${leftColorName} , ${rightColorName})`
 		// };

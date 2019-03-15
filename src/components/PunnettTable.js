@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Allele from "./Allele";
 import Diploid from "./Diploid";
 import ColorListboxContainer from "./ColorListboxContainer";
 import "../css/table.css";

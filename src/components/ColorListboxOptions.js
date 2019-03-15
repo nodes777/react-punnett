@@ -10,11 +10,13 @@ const ColorListboxOptions = props => {
 					fontSize: "20px",
 					color: color
 				};
+				//console.log(document.activeElement.id);
 				return (
 					<div
 						tabIndex="0"
 						role="option"
-						// aria-selected={color === focusedOption}
+						id={color}
+						aria-selected={focusedOption === color}
 						key={color}
 						onClick={e => handleOptionsEvents(color, index, e)}
 						onKeyDown={e => handleOptionsEvents(color, index, e)}

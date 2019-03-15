@@ -48,7 +48,10 @@ class ColorListboxContainer extends Component {
 				if (event.key === "Enter" || event.key === " ") {
 					this.setState(
 						() => {
-							return { openOptions: !this.state.openOptions };
+							return {
+								openOptions: !this.state.openOptions,
+								focusedOption: document.activeElement.id
+							};
 						},
 						() => {
 							this.arrayOfOptionsRefs[0].focus();
@@ -90,15 +93,16 @@ class ColorListboxContainer extends Component {
 					event.preventDefault();
 					this.arrayOfOptionsRefs[index - 1].focus();
 					this.setState(() => ({
-						focusedOption: color
+						focusedOption: document.activeElement.id
 					}));
 				}
 				if (event.key === "ArrowDown") {
 					event.preventDefault();
 					this.arrayOfOptionsRefs[index + 1].focus();
 					this.setState(() => ({
-						focusedOption: color
+						focusedOption: document.activeElement.id
 					}));
+					console.log(this.state.focusedOption);
 				}
 				if (event.key === "Escape") {
 					this.setState(
