@@ -53,5 +53,5 @@ const generatePunnettSquare = (parent1, parent2) => {
 	];
 };
 
-const gloob1 = new Gloob();
+//const gloob1 = new Gloob();
 console.log(gloob1);
