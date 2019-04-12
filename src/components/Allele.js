@@ -6,12 +6,13 @@ import ColorSquare from "./ColorSquare";
 export class Allele extends React.Component {
 	static propTypes = {
 		parentId: PropTypes.string,
-		alleleId: PropTypes.string
+		allelePosition: PropTypes.number
 	};
 
 	render() {
-		const { parents, parentId, alleleId, allelePosition } = this.props;
-		const colorName = parents.byId[parentId].genotype.color[allelePosition];
+		const { flowers, parentId, allelePosition } = this.props;
+		const colorName = flowers.byId[parentId].genotype.color[allelePosition];
+		console.log(this.props);
 		return (
 			<Fragment>
 				<span>{colorName} </span>
@@ -21,9 +22,9 @@ export class Allele extends React.Component {
 	}
 }
 
-function mapStateToProps({ parents }) {
+function mapStateToProps({ flowers }) {
 	return {
-		parents: parents
+		flowers: flowers
 	};
 }
 

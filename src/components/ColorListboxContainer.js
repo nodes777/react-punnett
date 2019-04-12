@@ -34,7 +34,6 @@ class ColorListboxContainer extends Component {
 			allelePosition: allelePosition,
 			allele: this.state.currentAllele
 		};
-		console.log(info);
 		dispatch(changeParentAllele(info));
 	};
 

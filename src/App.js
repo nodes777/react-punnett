@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import "./css/App.css";
-// import ColorSquare from "./components/ColorSquare";
-// import ColorListboxContainer from "./components/ColorListboxContainer";
 import PunnettTable from "./components/PunnettTable";
 import Game from "./phaser/GameContainer";
 

@@ -2,7 +2,7 @@ import { CHANGE_PARENT_ALLELE } from "../actions/parents";
 import { combineReducers } from "redux";
 import exampleState from "../exampleState";
 
-export function parents(state = exampleState, action) {
+export function flowers(state = exampleState, action) {
 	switch (action.type) {
 		case CHANGE_PARENT_ALLELE:
 			const {
@@ -41,7 +41,7 @@ export function parents(state = exampleState, action) {
 }
 
 const indexReducer = combineReducers({
-	parents
+	flowers
 });
 
 export default indexReducer;

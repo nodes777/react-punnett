@@ -53,16 +53,18 @@ class PunnettTable extends Component {
 							<Diploid
 								p1Id="flower1"
 								p2Id="flower2"
-								a1Id="allele1"
-								a2Id="allele1"
+								alleleType="color"
+								a1Pos={0}
+								a2Pos={0}
 							/>
 						</td>
 						<td>
 							<Diploid
 								p1Id="flower1"
 								p2Id="flower2"
-								a1Id="allele2"
-								a2Id="allele1"
+								alleleType="color"
+								a1Pos={1}
+								a2Pos={0}
 							/>
 						</td>
 					</tr>
@@ -70,23 +72,26 @@ class PunnettTable extends Component {
 						<th scope="row">
 							<ColorListboxContainer
 								flowerId="flower2"
-								alleleId="allele2"
+								alleleType="color"
+								allelePosition={1}
 							/>
 						</th>
 						<td>
 							<Diploid
 								p1Id="flower1"
 								p2Id="flower2"
-								a1Id="allele1"
-								a2Id="allele2"
+								alleleType="color"
+								a1Pos={0}
+								a2Pos={1}
 							/>
 						</td>
 						<td>
 							<Diploid
 								p1Id="flower1"
 								p2Id="flower2"
-								a1Id="allele2"
-								a2Id="allele2"
+								alleleType="color"
+								a1Pos={1}
+								a2Pos={1}
 							/>
 						</td>
 					</tr>
