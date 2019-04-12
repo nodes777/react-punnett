@@ -1,6 +1,7 @@
-import { CHANGE_PARENT_ALLELE } from "../actions/parents";
+import { CHANGE_PARENT_ALLELE, ADD_FLOWER } from "../actions/parents";
 import { combineReducers } from "redux";
 import exampleState from "../exampleState";
+import { determineGenotype } from "../utils/determineGenotype";
 
 export function flowers(state = exampleState, action) {
 	switch (action.type) {
@@ -11,8 +12,6 @@ export function flowers(state = exampleState, action) {
 				allelePosition,
 				allele
 			} = action.data;
-			console.log(action.data);
-			console.log(state.byId[flowerId].genotype.color);
 			return {
 				...state,
 				byId: {
@@ -34,7 +33,24 @@ export function flowers(state = exampleState, action) {
 					}
 				}
 			};
-
+		case ADD_FLOWER:
+			const { parent1, parent2 } = action.data;
+			// Better way to generate ids?
+			const newId = `flower${state.allIds.length + 1}`;
+			return {
+				...state,
+				byId: {
+					...state.byId,
+					[newId]: {
+						genotype: determineGenotype(
+							parent1.genotype,
+							parent2.genotype
+						),
+						position: { x: 0, y: 0 }
+					}
+				},
+				allIds: [...state.allIds.concat([newId])]
+			};
 		default:
 			return state;
 	}

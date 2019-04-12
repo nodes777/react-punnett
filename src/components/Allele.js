@@ -12,7 +12,6 @@ export class Allele extends React.Component {
 	render() {
 		const { flowers, parentId, allelePosition } = this.props;
 		const colorName = flowers.byId[parentId].genotype.color[allelePosition];
-		console.log(this.props);
 		return (
 			<Fragment>
 				<span>{colorName} </span>
