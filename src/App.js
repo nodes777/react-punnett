@@ -3,7 +3,7 @@ import "./css/App.css";
 // import ColorSquare from "./components/ColorSquare";
 // import ColorListboxContainer from "./components/ColorListboxContainer";
 import PunnettTable from "./components/PunnettTable";
-import Game from "./components/phaser/GameContainer";
+import Game from "./phaser/GameContainer";
 
 class App extends Component {
 	render() {
