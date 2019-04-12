@@ -1,14 +1,14 @@
 const exampleState = {
     byId: {
-        parent1: {
-            allele1: undefined,
-            allele2: undefined
+        flower1: {
+            genotype: { color: [undefined, undefined] },
+            position: { x: 0, y: 0 }
         },
-        parent2: {
-            allele1: undefined,
-            allele2: undefined
+        flower2: {
+            genotype: { color: [undefined, undefined] },
+            position: { x: 0, y: 0 }
         }
     },
-    allIds: ["parent1", "parent2"]
+    allIds: ["flower1", "flower2"]
 };
 export default exampleState;

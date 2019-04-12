@@ -1,13 +1,7 @@
 import React from "react";
 
 const ColorListboxSelect = props => {
-	const {
-		handleOpenOptions,
-		openOptions,
-		currentAllele,
-		selectRef,
-		parent
-	} = props;
+	const { handleOpenOptions, openOptions, currentAllele, selectRef } = props;
 	return (
 		<div
 			tabIndex="0"
@@ -25,7 +19,7 @@ const ColorListboxSelect = props => {
 				"Select an Allele"
 			) : (
 				<span>
-					<span>{currentAllele}</span>{" "}
+					<span>{currentAllele}</span>
 					<span style={{ color: currentAllele }}>&#9632;</span>
 				</span>
 			)}

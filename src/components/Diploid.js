@@ -13,12 +13,6 @@ export class Diploid extends React.Component {
 
 	render() {
 		const { p1Id, p2Id, a1Id, a2Id } = this.props;
-		// const { parents } = this.props;
-		// const leftColorName = parents.byId[p1Id][a1Id];
-		// const rightColorName = parents.byId[p2Id][a2Id];
-		// const bgStyle = {
-		// 	backgroundImage: `linear-gradient(to right, ${leftColorName} , ${rightColorName})`
-		// };
 		return (
 			<span>
 				<Allele parentId={p1Id} alleleId={a1Id} />

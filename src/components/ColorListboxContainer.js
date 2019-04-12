@@ -27,13 +27,14 @@ class ColorListboxContainer extends Component {
 	};
 
 	handleSubmit = () => {
-		const { dispatch, parentId, alleleId } = this.props;
+		const { dispatch, flowerId, alleleType, allelePosition } = this.props;
 		const info = {
-			parentId: parentId,
-			alleleId: alleleId,
+			flowerId: flowerId,
+			alleleType: alleleType,
+			allelePosition: allelePosition,
 			allele: this.state.currentAllele
 		};
-
+		console.log(info);
 		dispatch(changeParentAllele(info));
 	};
 

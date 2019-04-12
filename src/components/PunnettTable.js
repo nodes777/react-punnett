@@ -15,19 +15,20 @@ class PunnettTable extends Component {
 							scope="colgroup"
 							className="table-header"
 						>
-							Parent 1
+							Flower 1
 						</th>
 					</tr>
 					<tr>
 						<th scope="col">
 							<ColorListboxContainer
-								parentId="parent1"
-								alleleId="allele1"
+								flowerId="flower1"
+								alleleType="color"
+								allelePosition={0}
 							/>
 						</th>
 						<th scope="col">
 							<ColorListboxContainer
-								parentId="parent1"
+								flowerId="flower1"
 								alleleId="allele2"
 							/>
 						</th>
@@ -38,26 +39,26 @@ class PunnettTable extends Component {
 							scope="rowgroup"
 							className="table-header"
 						>
-							Parent 2
+							Flower 2
 						</th>
 						<th scope="row">
 							<ColorListboxContainer
-								parentId="parent2"
+								flowerId="flower2"
 								alleleId="allele1"
 							/>
 						</th>
 						<td>
 							<Diploid
-								p1Id="parent1"
-								p2Id="parent2"
+								p1Id="flower1"
+								p2Id="flower2"
 								a1Id="allele1"
 								a2Id="allele1"
 							/>
 						</td>
 						<td>
 							<Diploid
-								p1Id="parent1"
-								p2Id="parent2"
+								p1Id="flower1"
+								p2Id="flower2"
 								a1Id="allele2"
 								a2Id="allele1"
 							/>
@@ -66,22 +67,22 @@ class PunnettTable extends Component {
 					<tr>
 						<th scope="row">
 							<ColorListboxContainer
-								parentId="parent2"
+								flowerId="flower2"
 								alleleId="allele2"
 							/>
 						</th>
 						<td>
 							<Diploid
-								p1Id="parent1"
-								p2Id="parent2"
+								p1Id="flower1"
+								p2Id="flower2"
 								a1Id="allele1"
 								a2Id="allele2"
 							/>
 						</td>
 						<td>
 							<Diploid
-								p1Id="parent1"
-								p2Id="parent2"
+								p1Id="flower1"
+								p2Id="flower2"
 								a1Id="allele2"
 								a2Id="allele2"
 							/>
