@@ -3,12 +3,14 @@ import "./css/App.css";
 // import ColorSquare from "./components/ColorSquare";
 // import ColorListboxContainer from "./components/ColorListboxContainer";
 import PunnettTable from "./components/PunnettTable";
+import Game from "./components/phaser/GameContainer";
 
 class App extends Component {
 	render() {
 		return (
 			<div className="App">
 				<PunnettTable />
+				<Game />
 			</div>
 		);
 	}

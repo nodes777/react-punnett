@@ -27,7 +27,4 @@ function mapStateToProps({ parents }) {
 		parents: parents
 	};
 }
-export default connect(
-	mapStateToProps
-	// Implement map dispatch to props
-)(Diploid);
+export default connect(mapStateToProps)(Diploid);

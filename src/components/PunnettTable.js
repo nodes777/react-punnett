@@ -29,7 +29,8 @@ class PunnettTable extends Component {
 						<th scope="col">
 							<ColorListboxContainer
 								flowerId="flower1"
-								alleleId="allele2"
+								alleleType="color"
+								allelePosition={1}
 							/>
 						</th>
 					</tr>
@@ -44,7 +45,8 @@ class PunnettTable extends Component {
 						<th scope="row">
 							<ColorListboxContainer
 								flowerId="flower2"
-								alleleId="allele1"
+								alleleType="color"
+								allelePosition={0}
 							/>
 						</th>
 						<td>
