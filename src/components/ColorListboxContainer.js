@@ -28,40 +28,45 @@ class ColorListboxContainer extends Component {
 
 	handleSubmit = () => {
 		const { dispatch, flowerId, alleleType, allelePosition } = this.props;
+		console.log(this.props);
 		const info = {
 			flowerId: flowerId,
 			alleleType: alleleType,
 			allelePosition: allelePosition,
 			allele: this.state.currentAllele
 		};
+
 		dispatch(changeParentAllele(info));
 	};
 
 	handleOpenOptions = event => {
 		switch (event.type) {
 			case "click":
-				this.setState(() => ({
-					openOptions: !this.state.openOptions
-				}));
+				this._handleOpenOptions(event);
 				break;
 			case "keydown":
 				if (event.key === "Enter" || event.key === " ") {
-					this.setState(
-						() => {
-							return {
-								openOptions: !this.state.openOptions,
-								focusedOption: document.activeElement.id
-							};
-						},
-						() => {
-							this.arrayOfOptionsRefs[0].focus();
-						}
-					);
+					this._handleOpenOptions(event);
 				}
 				break;
 			default:
 		}
 	};
+
+	_handleOpenOptions = event => {
+		this.setState(
+			() => {
+				return {
+					openOptions: !this.state.openOptions,
+					focusedOption: document.activeElement.id
+				};
+			},
+			() => {
+				this.arrayOfOptionsRefs[0].focus();
+			}
+		);
+	};
+
 	handleOptionsEvents = (color, index, event) => {
 		switch (event.type) {
 			case "click":
@@ -159,9 +164,9 @@ class ColorListboxContainer extends Component {
 	}
 }
 
-function mapStateToProps({ parents }) {
+function mapStateToProps({ flowers }) {
 	return {
-		parents: parents
+		flowers
 	};
 }
 
