@@ -6,10 +6,14 @@ const ColorSquare = props => {
 	return (
 		<Fragment>
 			{color === undefined ? (
-				<span style={boxStyle}>&#9633;</span>
+				<span style={boxStyle} aria-hidden="true">
+					&#9633;
+				</span>
 			) : (
-				<span style={boxStyle}>&#9632;</span>
-			)}{" "}
+				<span style={boxStyle} aria-hidden="true">
+					&#9632;
+				</span>
+			)}
 		</Fragment>
 	);
 };

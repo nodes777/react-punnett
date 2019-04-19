@@ -20,7 +20,9 @@ const ColorListboxSelect = props => {
 			) : (
 				<span>
 					<span>{currentAllele}</span>
-					<span style={{ color: currentAllele }}>&#9632;</span>
+					<span aria-hidden="true" style={{ color: currentAllele }}>
+						&#9632;
+					</span>
 				</span>
 			)}
 		</div>

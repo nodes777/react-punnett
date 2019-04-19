@@ -18,7 +18,6 @@ class ColorListboxContainer extends Component {
 	state = {
 		currentAllele: undefined,
 		openOptions: false,
-		// arrayOfOptionsRefs: [],
 		focusedOption: undefined
 	};
 
@@ -28,7 +27,6 @@ class ColorListboxContainer extends Component {
 
 	handleSubmit = () => {
 		const { dispatch, flowerId, alleleType, allelePosition } = this.props;
-		console.log(this.props);
 		const info = {
 			flowerId: flowerId,
 			alleleType: alleleType,
